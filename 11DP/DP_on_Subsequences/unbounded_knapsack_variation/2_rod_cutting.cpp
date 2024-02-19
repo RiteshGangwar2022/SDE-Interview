@@ -1,38 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int cutRod_helper(vector<int> &price, vector<int> &weight, int n, int maxWeight)
+/*int cutRod_helper(vector<int> &price, vector<int> &weight, int n, int maxWeight)
 {
 
     // base case
 
-    if(maxWeight==0){
-        return 0;
-    }
-    if (n==0)
+    if (maxWeight == 0)
     {
-        return (maxWeight/weight[0])*price[0];
+        return INT_MIN;
+    }
+    if (n == 0)
+    {
+        return (maxWeight / weight[0]) * price[0]; // as we can take same element multiple times
     }
 
     // not pick
     int not_pick = cutRod_helper(weight, price, n - 1, maxWeight);
 
     // pick
-    int pick =INT_MIN;
+    int pick = INT_MIN;
     if (weight[n] <= maxWeight)
     {
         // only difference between 0/1 and unbounded knapsack is that, we will not move to previous index on taking the profit
         pick = price[n] + cutRod_helper(weight, price, n, maxWeight - weight[n]);
     }
-    return max(pick, not_pick);
-}
+    int res=max(pick, not_pick);
+    cout<<"res "<<res<<endl;
+    return res;
+}*/
 int cutRod(vector<int> &price, int n)
 {
     // it is the just the variation of unbounded knapsack
 
     // here weight will length of rod
 
-    vector<int> weight;
+   /* vector<int> weight;
 
     for (int i = 1; i <= n; i++)
     {
@@ -40,9 +43,12 @@ int cutRod(vector<int> &price, int n)
     }
     // and, max weight will be => length of rod
     int maxWeight = n;
-    int res = cutRod_helper(price, weight, n-1, maxWeight);
-    cout<<"res "<<res<<endl;
-    return res;
+    int res = cutRod_helper(price, weight, n - 1, maxWeight);
+    cout << "res " << res << endl;
+    return res;*/
+
+    //rest optimization is similar to un_bounded knapsack
+    //solve on gfg
 }
 
 int main()
